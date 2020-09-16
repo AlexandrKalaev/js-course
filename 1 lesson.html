@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="task1()">task 1</button>
-    <button onclick="task2()">task 2</button>
+    <button onclick="task1()">Градусы</button>
+    <button onclick="task2()">Кто admin???</button>
     <button onclick="task3()">task 3</button>
+    <button onclick="task3()">task 4</button>
 
     <script>
         // var a = 1; //объявление переменной с наивысшей областью видимости
@@ -16,15 +17,27 @@
         // const cc = 100; //объявление переменной-константы
 
         function task1() {
-            console.log(111);
+          
+          let tempC = parseFloat(prompt("Введите градусы Цельсия (число от -1000 до 1000)"));
+          while(isNaN(tempC)||tempC>1000||tempC<-1000){
+              tempC = parseFloat(prompt("Число! От -1000 до 1000!"));
+          }
+          let tempF = 1.8 * tempC + 32;
+          alert(tempC + ' градусов Цельсия = ' + tempF + ' градусов Фаренгейта');
+         
         };
 
         function task2() {
-            console.log(222);
+            let name = 'Василий';
+            let admin = name;
+            alert(name + ' сегодня admin!');
         };
 
         function task3() {
-            console.log(333);
+            var a = 1000;
+            var b = "108";
+            var c = a+b;
+            alert(c);
         };
 
 
