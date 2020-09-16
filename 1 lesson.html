@@ -8,7 +8,7 @@
 <body>
     <button onclick="task1()">Градусы</button>
     <button onclick="task2()">Кто admin???</button>
-    <button onclick="task3()">task 3</button>
+    <button onclick="task3()">сумма строк</button>
     <button onclick="task3()">task 4</button>
 
     <script>
@@ -37,7 +37,10 @@
             var a = 1000;
             var b = "108";
             var c = a+b;
-            alert(c);
+            b = parseInt(b);
+            alert('1000 + "108" = ' + c);
+            c = a+b;
+            alert('то же после parseint = ' + c);
         };
 
 
