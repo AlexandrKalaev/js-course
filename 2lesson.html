@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div style="display: flex;justify-content: space-around;max-width: 800px;margin: auto;margin-top: 70px;border: 1px solid gray; padding: 50px;">
+        <button onclick="first()">Switch [a... 15]</button>
+        <button onclick="task4()">Пункт 4 </button>
+        <button onclick="task5()">Пункт 5</button>
+        <button onclick="exp()">Степень</button>
+      
+    </div>
+    <div style="max-width: 800px;margin: auto;text-align: center;margin-top: 70px;border: 1px solid gray;padding: 50px;">
+        <h2>Сыграем?</h2>
+        <input name="game" type="radio" id="stoune" value="1">
+        <label for="stoune"><i class="fas fa-hand-rock"></i></label>
+        <input name="game" type="radio" id="scissors" value="2">
+        <label for="scissors"><i class="fas fa-cut"></i></label>
+        <input name="game" type="radio" id="paper" value="3">
+        <label for="paper"><i class="fas fa-toilet-paper"></i></label><br>
+        <button onclick="game()">Play</button><br>
+        <span id="result"></span>
+    </div>
+
+    <script>
+        let operation,a,b;
+        function first() {
+            let a
+            while (isNaN(a) || a > 15 || a < 0) {
+                a = +prompt('Введите число от 0 до 15');
+            }
+            switch (a) {
+                case 0:
+                    console.log(a++);
+                case 1:
+                    console.log(a++);
+                case 2:
+                    console.log(a++);
+                case 3:
+                    console.log(a++);
+                case 4:
+                    console.log(a++);
+                case 5:
+                    console.log(a++);
+                case 6:
+                    console.log(a++);
+                case 7:
+                    console.log(a++);
+                case 8:
+                    console.log(a++);
+                case 9:
+                    console.log(a++);
+                case 10:
+                    console.log(a++);
+                case 11:
+                    console.log(a++);
+                case 12:
+                    console.log(a++);
+                case 13:
+                    console.log(a++);
+                case 14:
+                    console.log(a++);
+                case 15:
+                    console.log(a++);
+                    alert('Результат в консоли')
+                    break;
+            }
+        }
+        
+        function task4() {
+
+            a = +prompt('Введите число "a"');
+            while (isNaN(a)) {
+                a = +prompt('Введите число "a"');
+            }
+            b = +prompt('Введите число "b"');
+            while (isNaN(b)) {
+                b = +prompt('Введите число "b"');
+            }
+            result();
+
+        }
+
+
+
+        function sum(arg1,arg2) {
+            return arg1 + arg2;
+        }
+
+        function def(arg1,arg2) {
+            return arg1 - arg2;
+        }
+
+        function prod(arg1,arg2) {
+            return arg1 * arg2;
+        }
+
+        function quot(arg1,arg2) {
+            return arg1 / arg2;
+        }
+
+        function result() {
+            alert('сумма = ' + sum(a, b) + '\nразность = ' + def(a, b) + '\nпроизведение = ' + prod(a, b) +
+                '\nчастное = ' + quot(a, b));
+        }
+        function task5(){
+            a = +prompt('Введите число "a"');
+            while (isNaN(a)) {
+                a = +prompt('Введите число "a"');
+            }
+            b = +prompt('Введите число "b"');
+            while (isNaN(b)) {
+                b = +prompt('Введите число "b"');
+            }
+            operation =   +prompt('Введите номер требуемого действия\n1 - сумма\n2 - разность\n3 - произведение\n4 - частное');
+            mathOperation(a,b,operation)
+        }
+        
+        function mathOperation(arg1,arg2,operation){
+            
+            switch (operation) {
+                case 1:
+                    alert(a +'+'+b+'=' + sum(a,b));
+                    break;
+                    case 2:
+                    alert(a +'-'+b+'=' + def(a,b));
+                    break;
+                    case 3:
+                    alert(a +'*'+b+'=' + prod(a,b));
+                    break;
+                    case 4:
+                    alert(a +'/'+b+'=' + quot(a,b));
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+        function power(val,pow){
+            if (pow==0){
+                return 1;
+            }
+            else if(pow==1){
+                return val;
+            }
+            else if(pow<0){
+                pow=-pow;
+                return 1/(val*power(val,pow-1));
+            }
+            else {
+                return val*power(val,pow-1);
+            }
+        }
+        function exp(){
+         let a = +prompt('введите число');
+         let b = +prompt('Введите степень')
+         alert('число '+a + ' в степени '+b+' = '+ power(a,b))
+     }
+
+     //ниже для игры дополнение
+     let res = document.getElementById('result');
+     function humanVal(){
+            let humanVal = document.getElementsByName('game');
+            for (i=0;i<humanVal.length;i++){
+                if(humanVal[i].checked){
+                    return i+1;
+                }
+            }
+        }
+        function game() {
+            let me = humanVal();
+            let skynet = Math.floor(Math.random() * 3) + 1;
+
+            let result = check(me, skynet);
+
+            res.innerText=(result);
+        }
+
+        function check(a, b) {
+            let winner = null;
+
+            if ((a === 1 && b === 2) || (a === 2 && b === 3) || (a === 3 && b === 1)) {
+                winner = 'Human';
+            } else if (a === b) {
+                winner = 'Both';
+            } else {
+                winner = 'Skynet';
+            }
+
+            return `${winner} победил; Человек: ${a} / Машина: ${b}`;
+        }
+    </script>
+</body>
+
+</html>
